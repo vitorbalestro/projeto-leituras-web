@@ -1,0 +1,397 @@
+.typing h4 {
+    position: relative;
+    color: black;
+    letter-spacing: 1px;
+    font-size: 1.2rem;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: .10em solid black;
+    margin: auto 0;
+    margin-bottom: 0;
+    height: 25px;
+    animation: type 4s steps(100, end),
+    blink-caret .5s step-end infinite;
+}
+@keyframes type {
+
+    from {
+        width:0px;
+    }
+    to {
+        width:350px;
+    }
+}
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: black }
+}
+
+
+
+.appearing-carousel {
+    animation: appear-carousel 8s steps(80,end);
+}
+@keyframes appear-carousel {
+    0% {
+        opacity: 0
+    }
+    58% {
+        opacity: 0
+    }
+    80% {
+        opacity: 1
+    }
+    100% {
+        opacity:1
+    }
+}
+
+
+
+.appearing-register {
+    animation: appear-register 2s steps(80,end);
+}
+@keyframes appear-register {
+    0% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1
+    }
+}
+
+
+
+.appearing-register-button {
+    animation: appear-register-button 9s steps(50,end);
+}
+@keyframes appear-register-button {
+    0% {
+        opacity: 0;
+    }
+    70% {
+        opacity: 0;
+    }
+    90% {
+        opacity: 1
+    }
+}
+
+.register-button {
+    background-color: black !important;
+    border: 2px solid black;
+
+}
+
+
+.resenha-button {
+    background-color: black;
+    border: 2px solid black;
+    width: 120px;
+    height: 40px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.resenha-button:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+}
+
+.register-button:hover {
+    border: 2px solid black;
+    animation: register-button-grow 3s steps(300) infinite;
+}
+@keyframes register-button-grow {
+    from, to {
+        width: 13%
+    }
+    50% {
+        width: 20%
+    }
+}
+
+.reg-page-button {
+    background-color: black !important;
+    border: 2px solid black;
+
+}
+.reg-page-button:hover {
+    border: 2px solid black;
+    animation: reg-page-button-grow 3s steps(300) infinite;
+}
+
+
+@keyframes reg-page-button-grow {
+    from, to {
+        width: 8%
+    }
+    50% {
+        width: 14%
+    }
+}
+
+.appearing-quote {
+    animation: appear-quote 6s steps(240,end)
+}
+@keyframes appear-quote {
+    0% {
+        opacity: 0
+    }
+    66% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1
+    }
+}
+
+
+
+.category-cards {
+    border: 3px solid black;
+}
+
+
+
+.card1 {
+    animation: appear-card1 0.5s steps(30,end);
+}
+@keyframes appear-card1 {
+    from {
+        opacity: 0
+    }
+    to {
+        opacity: 1
+    }
+}
+
+.card2 {
+    animation: appear-card2 1s steps(60,end);
+}
+@keyframes appear-card2 {
+   0% {
+    opacity: 0
+   }
+   50% {
+    opacity: 0
+   }
+   100% {
+    opacity: 1
+   }
+}
+
+.card3 {
+    animation: appear-card3 1.5s steps(90,end);
+}
+@keyframes appear-card3 {
+    0% {
+        opacity: 0
+    }
+    66% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1
+    }
+}
+
+.card4 {
+    animation: appear-card4 2s steps(120,end);
+}
+@keyframes appear-card4 {
+    0% {
+        opacity: 0
+    }
+    75% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1
+    }
+}
+
+.card5 {
+    animation: appear-card5 2.5s steps(150,end);
+}
+@keyframes appear-card5 {
+    0% {
+        opacity: 0
+    }
+    80% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1
+    }
+}
+
+.card6 {
+    animation: appear-card6 3s steps(180,end);
+}
+@keyframes appear-card6 {
+    0% {
+        opacity: 0
+    }
+    83% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1
+    }
+}
+
+.card7 {
+    animation: appear-card7 3.5s steps(210,end);
+}
+@keyframes appear-card7 {
+    0% {
+        opacity: 0
+    }
+    86% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1
+    }
+}
+
+.card8 {
+    animation: appear-card8 4s steps(240,end);
+}
+@keyframes appear-card8 {
+    0% {
+        opacity: 0
+    }
+    88% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1
+    }
+}
+
+.category-cards:hover {
+    border: 3px solid black;
+    background-color: black;
+    color: white
+}
+
+.appearing-about-menu {
+    animation: appear-about-menu 2s steps(80,end);
+}
+@keyframes appear-about-menu {
+    0% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1
+    }
+}
+
+.appearing-about-text {
+    animation: appear-about-text 4s steps(160,end);
+}
+@keyframes appear-about-text {
+    0% {
+        opacity: 0
+    }
+    50% {
+        opacity:0
+    }
+    100% {
+        opacity: 1
+    }
+}
+
+.pag {
+    border-color: grey;
+    color: black
+}
+
+.pag:hover {
+    border-color: grey;
+    color: black
+}
+
+.book-card {
+    border: 3px solid black;
+}
+
+.book-card:hover {
+    background-color: black;
+    color: white
+}
+
+.appearing-search-box {
+    animation: appear-search-box 1.5s steps(60,end);
+}
+@keyframes appear-search-box {
+    from {
+        opacity: 0
+    }
+    to {
+        opacity: 1
+    }
+}
+
+.appearing-book-card1 {
+    animation: book1 2s steps(120,end) 
+}
+@keyframes book1 {
+    0% {
+        opacity: 0
+    }
+    75% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1
+    }
+}
+
+.appearing-book-card2 {
+    animation: book2 2.5s steps(150,end)
+}
+@keyframes book2 {
+    0%{
+        opacity: 0
+    }
+    80% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1
+    }
+}
+
+.appearing-book-card3 {
+    animation: book3 3s steps(180,end)
+}
+@keyframes book3 {
+    0% {
+        opacity: 0
+    }
+    83.5% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1
+    }
+}
+
+.appearing-pagination {
+    animation: appear-pag 4s steps(240,end)
+}
+@keyframes appear-pag {
+    0% {
+        opacity: 0
+    }
+    75% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1
+    }
+}
