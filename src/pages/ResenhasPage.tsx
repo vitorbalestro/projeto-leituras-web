@@ -6,6 +6,7 @@ import useRemoverResenha from "../hooks/useRemoverResenha";
 
 interface ResenhaProp {
     resenha: Resenha;
+    handleRemoverResenha: (id: number) => void;
 }
 
 const ResenhaCard = (props: ResenhaProp) => {
@@ -13,12 +14,6 @@ const ResenhaCard = (props: ResenhaProp) => {
     const id = props.resenha!.id;
     const texto = props.resenha!.texto;
     const autor = props.resenha!.autor;
-
-    const removerResenha = useRemoverResenha();
-
-    const handleRemoverResenha = (id: number) => {
-        removerResenha.mutate(id);
-    }
 
     return (
         <>
@@ -30,7 +25,7 @@ const ResenhaCard = (props: ResenhaProp) => {
                         {texto}
                     </Card.Text>
                     <div style={{display: "flex"}}>
-                        <Button onClick={() => handleRemoverResenha(id!)} size="sm" className="mr-5" variant="danger">Remover</Button>&nbsp;&nbsp;
+                        <Button onClick={() => props.handleRemoverResenha(id!)} size="sm" className="mr-5" variant="danger">Remover</Button>&nbsp;&nbsp;
                         <Button size="sm" className="ml-2">Alterar</Button>
                     </div>
                 </Card.Body>
@@ -51,6 +46,12 @@ const ResenhasPage = () => {
     const tituloDoLivro = livro ? livro.nome : "" ;
     const autorDoLivro = livro ? livro.autor : "";
 
+    const removerResenha = useRemoverResenha();
+
+    const handleRemoverResenha = (id: number) => {
+        removerResenha.mutate(id);
+    }
+
     return (
         <>
             <br></br>
@@ -59,7 +60,7 @@ const ResenhasPage = () => {
                 <h3><i>{autorDoLivro}</i></h3>
             </div>
             <br></br>
-            {resenhas.map(resenha => resenha ? <ResenhaCard resenha={resenha} /> : "")}
+            {resenhas.map(resenha => resenha ? <ResenhaCard resenha={resenha} handleRemoverResenha={handleRemoverResenha}/> : "")}
         </>
     );
 };
