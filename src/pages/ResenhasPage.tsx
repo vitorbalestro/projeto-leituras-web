@@ -4,17 +4,28 @@ import Resenha from '../interfaces/Resenha';
 import { Card, Button } from 'react-bootstrap';
 import useRemoverResenha from "../hooks/useRemoverResenha";
 import useLivroPorId from "../hooks/useLivroPorId";
+import React, { useState } from 'react';
+import UpdateResenhaForm from '../components/UpdateResenhaForm';
+import Livro from '../interfaces/Livro';
+import Notification from '../components/Notification';
 
 interface ResenhaProp {
     resenha: Resenha;
     handleRemoverResenha: (id: number) => void;
+    setNotification: React.Dispatch<React.SetStateAction<string>>;
+    setNotificationType: React.Dispatch<React.SetStateAction<string>>;
+    livro: Livro
 }
 
 const ResenhaCard = (props: ResenhaProp) => {
+
    
     const id = props.resenha!.id;
     const texto = props.resenha!.texto;
     const autor = props.resenha!.autor;
+
+    const [ showForm, setShowForm ] = useState(false);
+
 
     return (
         <>
@@ -27,8 +38,16 @@ const ResenhaCard = (props: ResenhaProp) => {
                     </Card.Text>
                     <div style={{display: "flex"}}>
                         <Button onClick={() => props.handleRemoverResenha(id!)} size="sm" className="mr-5" variant="danger">Remover</Button>&nbsp;&nbsp;
-                        <Button size="sm" className="ml-2">Alterar</Button>
+                        <Button onClick={()=> setShowForm(!showForm)} size="sm" className="ml-2" variant={!showForm ? "primary":"warning"}>{!showForm ?"Alterar" : "Cancelar"}</Button>
                     </div>
+                    
+                    {showForm ? 
+                    <>
+                        <br></br>
+                        <UpdateResenhaForm setShowForm={setShowForm} id={id!} autor={autor} livro={props.livro} setNotification={props.setNotification} setNotificationType={props.setNotificationType} /> 
+                    </>
+                    : 
+                    <></>}
                 </Card.Body>
             </Card>
             <br></br>
@@ -40,21 +59,39 @@ const ResenhaCard = (props: ResenhaProp) => {
 
 const ResenhasPage = () => {
 
+    const [notification, setNotification] = useState('')
+    const [notificationType, setNotificationType] = useState('')
+
     let { id } = useParams();
-    const response = useResenhas(id);
-    const resenhas = response.data ? response.data as Resenha[]: [] as Resenha[];
+
+    const removerResenha = useRemoverResenha();
+    const navigate = useNavigate();
     const res = useLivroPorId(id);
-    const livro = res.data;
+
+    
+
+    const {
+        data: response,
+        isLoading,
+        error,
+    } = useResenhas(id);
+
+    
+    if (isLoading || res.isLoading ) return <h6> Carregando... </h6>;
+
+    if(error || res.error || !res || !response) throw error;
+
+    const resenhas = response as Resenha[];
+    
+    const livro = res.data as Livro;
     const tituloDoLivro = livro ? livro.nome : "" ;
     const autorDoLivro = livro ? livro.autor : "";
     const idLivro = livro ? livro.id : "";
 
-    const removerResenha = useRemoverResenha();
-
-    const navigate = useNavigate();
 
     const handleRemoverResenha = (id: number) => {
-        removerResenha.mutate(id);
+        if(window.confirm(`Remover Resenha #${id}?`))
+            removerResenha.mutate(id);
     }
 
     const handleClickNovaResenha = () => {
@@ -63,16 +100,24 @@ const ResenhasPage = () => {
 
     return (
         <>
+            <div className="container">
+                <Notification message = {notification} notificationType = {notificationType} />
+            </div>
             <br></br>
             <div className="align-center text-center">
                 <h2>{tituloDoLivro}</h2>
                 <h3><i>{autorDoLivro}</i></h3>
             </div>
             <br></br>
-            {resenhas.map(resenha => resenha ? <ResenhaCard resenha={resenha} handleRemoverResenha={handleRemoverResenha}/> : "")}
+            {resenhas.map(resenha => resenha ? 
+            <ResenhaCard livro={livro} 
+                resenha={resenha} handleRemoverResenha={handleRemoverResenha} 
+                setNotification={setNotification} setNotificationType={setNotificationType}/> 
+            : "")}
 
-            <br></br>   
+            <div className="mb-5">
             <Button onClick={handleClickNovaResenha} style={{marginLeft:'2rem'}} className="btn btn-primary btn-lg register-button">Nova resenha</Button>
+            </div>
         </>
     );
 };

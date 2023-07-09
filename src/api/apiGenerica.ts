@@ -24,6 +24,11 @@ class ApiGenerica<T> {
         ApiGenerica.axiosInstance 
             .post<T>(this.endpoint,obj)
             .then((res) => res.data)
+
+    update = (obj: T) =>
+        ApiGenerica.axiosInstance
+            .put<T>(this.endpoint,obj)
+            .then((res) => res.data)
     
     recuperarPagina = (config: AxiosRequestConfig) =>
         ApiGenerica.axiosInstance
