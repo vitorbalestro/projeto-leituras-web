@@ -1,8 +1,9 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import useResenhas from "../hooks/useResenhas";
 import Resenha from '../interfaces/Resenha';
 import { Card, Button } from 'react-bootstrap';
 import useRemoverResenha from "../hooks/useRemoverResenha";
+import useLivroPorId from "../hooks/useLivroPorId";
 
 interface ResenhaProp {
     resenha: Resenha;
@@ -42,14 +43,22 @@ const ResenhasPage = () => {
     let { id } = useParams();
     const response = useResenhas(id);
     const resenhas = response.data ? response.data as Resenha[]: [] as Resenha[];
-    const livro = resenhas[0] ? resenhas[0].livro : {nome:"",autor:""};
+    const res = useLivroPorId(id);
+    const livro = res.data;
     const tituloDoLivro = livro ? livro.nome : "" ;
     const autorDoLivro = livro ? livro.autor : "";
+    const idLivro = livro ? livro.id : "";
 
     const removerResenha = useRemoverResenha();
 
+    const navigate = useNavigate();
+
     const handleRemoverResenha = (id: number) => {
         removerResenha.mutate(id);
+    }
+
+    const handleClickNovaResenha = () => {
+        navigate(`/novaresenha/${idLivro}`);
     }
 
     return (
@@ -61,6 +70,9 @@ const ResenhasPage = () => {
             </div>
             <br></br>
             {resenhas.map(resenha => resenha ? <ResenhaCard resenha={resenha} handleRemoverResenha={handleRemoverResenha}/> : "")}
+
+            <br></br>   
+            <Button onClick={handleClickNovaResenha} style={{marginLeft:'2rem'}} className="btn btn-primary btn-lg register-button">Nova resenha</Button>
         </>
     );
 };

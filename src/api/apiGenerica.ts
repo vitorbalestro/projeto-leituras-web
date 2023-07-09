@@ -9,6 +9,12 @@ class ApiGenerica<T> {
     constructor(endpoint: string){
         this.endpoint = endpoint;
     }
+
+    recuperarPorId = (id: number) =>
+        ApiGenerica.axiosInstance
+            .get<T>(this.endpoint + "/" + id)
+            .then((res) => res.data)
+            
     remover = (id: number) =>
         ApiGenerica.axiosInstance
             .delete(this.endpoint + "/" +id)
