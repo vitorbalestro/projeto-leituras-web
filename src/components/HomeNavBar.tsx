@@ -17,7 +17,7 @@ const HomeNavBar = () => {
                         </Link>
                     </Nav.Link>
                     <NavDropdown title="Livros" id="home-nav-dropdown" style={{color:"dimgrey"}}>
-                        <NavDropdown.Item href="#recentes">Recentes</NavDropdown.Item>
+                        <NavDropdown.Item href="#recentes" style={{textDecoration:0, color:"dimgrey"}}>Recentes</NavDropdown.Item>
                         <NavDropdown.Item href="#">
                             <Link to='/categorias' style={{textDecoration:0, color:"dimgrey"}}>
                                 Categorias
@@ -32,7 +32,7 @@ const HomeNavBar = () => {
                 </Nav>
                 <Nav className="ml-auto">
                     <Nav.Link href="#">Entrar</Nav.Link>
-                    <Nav.Link href="#">Cadastre-se</Nav.Link>
+                    <Nav.Link href="/cadastro" style={{textDecoration:0, color:"dimgrey"}}>Cadastre-se</Nav.Link>
                     <Nav.Link href="#" as="span">
                         <Link to='/sobre' style={{textDecoration:0, color:"dimgrey"}}>
                             Sobre

@@ -1,8 +1,11 @@
 import '../styles.css';
 import Carousel from 'react-bootstrap/Carousel';
 import Button from 'react-bootstrap/Button';
+import { useNavigate } from 'react-router-dom';
 
 const HomePage = () => {
+
+    const navigate = useNavigate();
 
     return (
         <>   
@@ -37,7 +40,7 @@ const HomePage = () => {
             </Carousel>
 
             <div className="container appearing-register-button mb-5">
-                <Button className="btn btn-primary btn-lg register-button">Comece já!</Button>
+                <Button onClick={() => navigate('/cadastro')}className="btn btn-primary btn-lg register-button">Comece já!</Button>
             </div>
         </>
     )

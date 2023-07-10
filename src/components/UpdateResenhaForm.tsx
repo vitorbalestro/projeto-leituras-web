@@ -76,7 +76,7 @@ const UpdateResenhaForm = ({ id, autor, livro, setNotification, setNotificationT
             <form id="myForm" onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-group">
                     <label htmlFor="texto">Novo texto</label>
-                    <textarea {...register("texto")} defaultValue="" style={{height: 300}}  className={errors.texto
+                    <textarea {...register("texto")} defaultValue="" style={{height: 2500}}  className={errors.texto
                     ? "form-control form-control-sm is-invalid"
                     : "form-control form-control-sm"} id="texto" 
                             aria-describedby="textHelp"/>

@@ -93,7 +93,7 @@ const CadastroDeResenhaForm = ({ livro, setNotification, setNotificationType }: 
                 <br></br>
                 <div className="form-group">
                     <label htmlFor="texto">Resenha</label>
-                    <textarea {...register("texto")} defaultValue="" style={{height: 300}}  className={errors.texto
+                    <textarea {...register("texto")} defaultValue="" style={{height: 250}}  className={errors.texto
                     ? "form-control form-control-sm is-invalid"
                     : "form-control form-control-sm"} id="texto" 
                             aria-describedby="textHelp"/>

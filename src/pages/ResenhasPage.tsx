@@ -90,8 +90,28 @@ const ResenhasPage = () => {
 
 
     const handleRemoverResenha = (id: number) => {
-        if(window.confirm(`Remover Resenha #${id}?`))
+        if(window.confirm(`Remover Resenha #${id}?`)){
             removerResenha.mutate(id);
+            if(!removerResenha.error) {
+                setNotification(`Resenha removida com sucesso!`);
+                setNotificationType('success');
+    
+                setTimeout(() => {
+                    setNotification('');
+                    setNotificationType('');
+                },3000);
+            }
+
+            else {
+                setNotification(`Erro ao remover resenha. Tente novamente.`);
+                setNotificationType('error');
+    
+                setTimeout(() => {
+                    setNotification('');
+                    setNotificationType('');
+                },3000);
+            }
+        }
     }
 
     const handleClickNovaResenha = () => {
@@ -114,7 +134,14 @@ const ResenhasPage = () => {
                 resenha={resenha} handleRemoverResenha={handleRemoverResenha} 
                 setNotification={setNotification} setNotificationType={setNotificationType}/> 
             : "")}
-
+            {resenhas.length === 0 ? 
+                <>
+                    <div className="align-center text-center mt-3 mb-3">
+                        <h4>Ainda não há resenhas cadastradas.</h4>
+                        <br></br>
+                    </div>
+                </>
+                : <></>}
             <div className="mb-5">
             <Button onClick={handleClickNovaResenha} style={{marginLeft:'2rem'}} className="btn btn-primary btn-lg register-button">Nova resenha</Button>
             </div>
