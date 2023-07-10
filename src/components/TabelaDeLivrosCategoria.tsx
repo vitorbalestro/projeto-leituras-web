@@ -7,7 +7,7 @@ interface Props {
     livros: Livro[];
 }
 
-const TabelaDeLivros = ({ livros } : Props) => {
+const TabelaDeLivrosCategoria = ({ livros } : Props) => {
     return (
         <table className="table table-responsive table-bordered table-hover table-sm">
             <thead>
@@ -15,7 +15,6 @@ const TabelaDeLivros = ({ livros } : Props) => {
                     <th className="align-middle text-center">Id</th>
                     <th className="align-middle text-center">Título</th>
                     <th className="align-middle text-center">Autor</th>
-                    <th className="align-middle text-center">Categoria</th>
                     <th className="align-middle text-center">Ações</th>
                 </tr>
             </thead>
@@ -31,9 +30,6 @@ const TabelaDeLivros = ({ livros } : Props) => {
                         <td width="10%" className="align-middle text-center">
                             {livro.autor}
                         </td>
-                        <td width="5%" className="align-middle text-center">
-                            {livro.categoria.nome}
-                        </td>
                         <td width="10%" className="align-middle text-center">
                             <Link to={`/resenhas/${livro.id}`} style={{textDecoration:0, color:"dimgrey"}}>Ver resenhas</Link>
                         </td>
@@ -44,4 +40,4 @@ const TabelaDeLivros = ({ livros } : Props) => {
     )
 }
 
-export default TabelaDeLivros;
+export default TabelaDeLivrosCategoria;

@@ -52,10 +52,11 @@ const CadastroUserForm = () => {
         nome,
         username,
         email,
-        dataNascimento
+        dataNascimento,
+        password
         }: FieldValues) => {
             reset();
-
+            navigate('/');
     };
 
     return (

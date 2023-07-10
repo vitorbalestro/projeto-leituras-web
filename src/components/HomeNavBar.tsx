@@ -31,7 +31,7 @@ const HomeNavBar = () => {
                     </NavDropdown>
                 </Nav>
                 <Nav className="ml-auto">
-                    <Nav.Link href="#">Entrar</Nav.Link>
+                    <Nav.Link href="/login">Entrar</Nav.Link>
                     <Nav.Link href="/cadastro" style={{textDecoration:0, color:"dimgrey"}}>Cadastre-se</Nav.Link>
                     <Nav.Link href="#" as="span">
                         <Link to='/sobre' style={{textDecoration:0, color:"dimgrey"}}>
