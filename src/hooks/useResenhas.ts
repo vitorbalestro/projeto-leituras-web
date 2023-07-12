@@ -8,6 +8,7 @@ const useResenhas = (id?: string) => useQuery({
         .get<Resenha[]>(`http://localhost:8080/resenhas/livro/${id}`)
         .then((res) => res.data),
         staleTime: 10_000,
+        refetchOnMount: "always"
 })
 
 export default useResenhas;

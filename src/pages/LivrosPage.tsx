@@ -2,8 +2,8 @@ import { useState } from "react";
 import Paginacao from "../components/Paginacao";
 import Pesquisa from "../components/Pesquisa";
 import useLivrosPaginados from "../hooks/useLivrosPaginados";
-import TabelaDeLivros from "../components/TabelaDeLivros"
-
+import TabelaDeLivros from "../components/TabelaDeLivros";
+import '../styles.css';
 
 const ListaDeLivros = () => {
     const tamanho = 5;
@@ -39,7 +39,7 @@ const ListaDeLivros = () => {
             <br></br>
             <TabelaDeLivros livros={livros} />
             <br></br>
-            <div className="mt-4" style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
+            <div className="mt-4 menu-paginacao" style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
                 <Paginacao
                     pagina={pagina}
                     totalDePaginas={totalDePaginas}

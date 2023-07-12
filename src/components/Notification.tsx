@@ -1,21 +1,21 @@
 const successfulNotificationStyle = {
-    color: 'green',
-    background: 'lightgrey',
-    fontSize: 20,
+    color: 'white',
+    background: 'dodgerblue',
+    fontSize: 15,
     borderStyle: 'solid',
-    borderRadius: 5,
     padding: 10,
-    marginBottom: 10
+    marginBottom: 10,
+    marginTop: 10,
 }
 
 const errorNotificationStyle = {
-    color: 'red',
-    background: 'lightgrey',
+    color: 'white',
+    background: 'red',
     fontSize: 20,
     borderStyle: 'solid',
-    borderRadius: 5,
     padding: 10,
-    marginBottom: 10
+    marginBottom: 10,
+    marginTop: 10
 }
 
 
@@ -28,7 +28,7 @@ const Notification = ({ message, notificationType } : Props) => {
     if(message === '') return null
     return (
         notificationType === 'success' ?
-        <div className='success' style={successfulNotificationStyle}>
+        <div className='success appearing-vanishing-notification' style={successfulNotificationStyle}>
             {message}
         </div> 
         : 

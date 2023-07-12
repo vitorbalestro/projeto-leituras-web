@@ -60,7 +60,7 @@ const CadastroDeResenhaForm = ({ livro, setNotification, setNotificationType }: 
                 setNotification('');
                 setNotificationType('');
                 navigate(`/resenhas/${livro.id}`)
-            },2000);
+            },3000);
         }
     };
 

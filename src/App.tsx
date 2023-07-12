@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 import './App.css';
 import HomeNavBar from './components/HomeNavBar';
-import CategoriasPage from './pages/CategoriasPage';
+import CategoriasSelectViewPage from './pages/CategoriasSelectViewPage';
 import HomePage from './pages/HomePage';
 import SobrePage from './pages/SobrePage';
 import ListaDeLivros from './pages/LivrosPage';
@@ -17,14 +17,14 @@ function App() {
       <HomeNavBar />
       <Routes>
         <Route path='/' element={<HomePage />} />
-        <Route path='/categorias' element={<CategoriasPage />} />
+        <Route path='/categorias' element={<CategoriasSelectViewPage />} />
         <Route path='/sobre' element={<SobrePage />} />
         <Route path='/livros' element={<ListaDeLivros />} />
         <Route path='/resenhas/:id' element={<ResenhasPage />} />
         <Route path='/novaresenha/:id' element={<NovaResenhaPage />} />
         <Route path='/cadastro' element={<CadastroPage />} />
         <Route path='/login' element={<LoginPage />} />
-        <Route path='/categoria/:id' element={<LivrosDeCategoriaPage />}/>      
+        <Route path='/categoria/:id' element={<LivrosDeCategoriaPage />}/>   
       </Routes>
     </>
   )

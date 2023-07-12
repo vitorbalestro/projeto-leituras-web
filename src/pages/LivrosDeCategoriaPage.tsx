@@ -36,7 +36,7 @@ const LivrosDeCategoriaPage = () => {
                 <h2>{categoriasMap.get(id!)}</h2>
             </div>
             <div className="p-5">
-                {livros.length === 0 ? 
+                {livros && livros.length === 0 ? 
                 <>
                     <div className='p-5 mt-5'>
                         <h2>Não há livros cadastrados nesta categoria.</h2>

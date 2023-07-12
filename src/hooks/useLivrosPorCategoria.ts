@@ -8,6 +8,7 @@ const useLivrosPorCategoria = (id?: string) => useQuery({
         .get<Livro[]>(`http://localhost:8080/livros/categoria/${id}`)
         .then((res) => res.data),
         staleTime: 10_000,
+        refetchOnMount: "always"
 })
 
 export default useLivrosPorCategoria;

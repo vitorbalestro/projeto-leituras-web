@@ -77,6 +77,43 @@
     }
 }
 
+.categoria-button-style {
+    background-color: white;
+    border: 0px
+}
+
+.clicked-categoria-button-style {
+    background-color: white;
+    border: 0px;
+    color: blue;
+}
+
+.menu-paginacao:hover {
+    cursor: pointer
+}
+
+.appearing-vanishing-notification {
+    animation: appear-vanish-notification 3s steps(50,end);
+}
+    @keyframes appear-vanish-notification {
+    0%{
+        opacity: 0
+    }
+    30% {
+        opacity: 1
+    }
+    70% {
+        opacity: 1
+    }
+    100% {
+        opacity: 0
+    }
+    101% {
+        opacity: 0
+    }
+}
+
+
 .register-button {
     background-color: black !important;
     border: 2px solid black;

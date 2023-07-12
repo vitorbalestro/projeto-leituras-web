@@ -8,6 +8,9 @@ interface Props {
 }
 
 const TabelaDeLivrosCategoria = ({ livros } : Props) => {
+
+    if(!livros) return null;
+
     return (
         <table className="table table-responsive table-bordered table-hover table-sm">
             <thead>
@@ -19,7 +22,7 @@ const TabelaDeLivrosCategoria = ({ livros } : Props) => {
                 </tr>
             </thead>
             <tbody>
-                {livros.map((livro) => 
+                {livros!.map((livro) => 
                     <tr key={livro.id}>
                         <td width="5%" className="align-middle text-center">
                             {livro.id}

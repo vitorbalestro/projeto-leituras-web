@@ -8,6 +8,7 @@ const useLivroPorId = (id?: string) => useQuery({
         .get<Livro>(`http://localhost:8080/livros/${id}`)
         .then((res) => res.data),
         staleTime: 10_000,
+        refetchOnMount: "always"
 })
 
 export default useLivroPorId;
