@@ -10,6 +10,7 @@ import NovaResenhaPage from './pages/NovaResenhaPage';
 import CadastroPage from './pages/CadastroPage';
 import LoginPage from './pages/LoginPage';
 import LivrosDeCategoriaPage from './pages/LivrosDeCategoriaPage';
+import NovoLivro from './pages/NovoLivro';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path='/cadastro' element={<CadastroPage />} />
         <Route path='/login' element={<LoginPage />} />
         <Route path='/categoria/:id' element={<LivrosDeCategoriaPage />}/>   
+        <Route path='/cadastrolivro' element={<NovoLivro />} />
       </Routes>
     </>
   )

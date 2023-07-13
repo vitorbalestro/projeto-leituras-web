@@ -4,8 +4,13 @@ import Pesquisa from "../components/Pesquisa";
 import useLivrosPaginados from "../hooks/useLivrosPaginados";
 import TabelaDeLivros from "../components/TabelaDeLivros";
 import '../styles.css';
+import Notification from '../components/Notification';
 
 const ListaDeLivros = () => {
+
+    const [notification, setNotification] = useState('')
+    const [notificationType, setNotificationType] = useState('')
+
     const tamanho = 5;
     const [ pagina, setPagina ] = useState(0);
     const [ nome, setNome ] = useState("");
@@ -32,12 +37,15 @@ const ListaDeLivros = () => {
 
     return (
         <>
+            <div className="container">
+                <Notification message = {notification} notificationType = {notificationType} />
+            </div>
         <div className="p-5">
             <div className="mb-1">
                 <Pesquisa nome={nome} onRetrieveNome={handleRetrievedNome} />
             </div>
             <br></br>
-            <TabelaDeLivros livros={livros} />
+            <TabelaDeLivros livros={livros} setNotification={setNotification} setNotificationType={setNotificationType} />
             <br></br>
             <div className="mt-4 menu-paginacao" style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
                 <Paginacao

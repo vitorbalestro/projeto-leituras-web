@@ -102,7 +102,7 @@ const CadastroDeResenhaForm = ({ livro, setNotification, setNotificationType }: 
                     </div>
 
                 </div>
-                <button id="botao" type="submit" form="myForm" value="submit" className="btn reg-page-button btn-primary btn-lg mt-3 mb-2">Enviar</button>
+                <button id="botao" type="submit" form="myForm" value="submit" className="btn reg-page-button btn-primary mt-3 mb-2">Enviar</button>
             </form>
             
         </div>

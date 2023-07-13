@@ -1,13 +1,43 @@
 import Livro from "../interfaces/Livro";
 import '../styles.css';
 import { Link } from 'react-router-dom';
-
+import useRemoverLivro from '../hooks/useRemoverLivro';
 
 interface Props {
     livros: Livro[];
+    setNotification: React.Dispatch<React.SetStateAction<string>>;
+    setNotificationType: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const TabelaDeLivrosCategoria = ({ livros } : Props) => {
+const TabelaDeLivrosCategoria = ({ livros, setNotification, setNotificationType } : Props) => {
+
+    const removerLivro = useRemoverLivro();
+
+
+    const handleRemoverLivro = (id: number) => {
+        if(window.confirm(`Remover Livro #${id}?`)){
+            removerLivro.mutate(id);
+            if(!removerLivro.error) {
+                setNotification(`Livro removido com sucesso!`);
+                setNotificationType('success');
+    
+                setTimeout(() => {
+                    setNotification('');
+                    setNotificationType('');
+                },3000);
+            }
+
+            else {
+                setNotification(`Erro ao remover livro. Tente novamente.`);
+                setNotificationType('error');
+    
+                setTimeout(() => {
+                    setNotification('');
+                    setNotificationType('');
+                },3000);
+            }
+        }
+    }
 
     if(!livros) return null;
 
@@ -35,6 +65,10 @@ const TabelaDeLivrosCategoria = ({ livros } : Props) => {
                         </td>
                         <td width="10%" className="align-middle text-center">
                             <Link to={`/resenhas/${livro.id}`} style={{textDecoration:0, color:"dimgrey"}}>Ver resenhas</Link>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <button className="remover-button-table-style" onClick={() => handleRemoverLivro(livro.id!)}>
+                                Remover
+                            </button>
                         </td>
                     </tr>
                 )}

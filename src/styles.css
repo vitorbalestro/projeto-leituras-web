@@ -82,6 +82,18 @@
     border: 0px
 }
 
+.remover-button-table-style {
+    color: red;
+    background-color: white;
+    border: 0px;
+}
+
+.remover-button-table-style:hover {
+    background-color: red;
+    color:white;
+    border: 0px
+}
+
 .clicked-categoria-button-style {
     background-color: white;
     border: 0px;

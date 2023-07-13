@@ -1,12 +1,13 @@
 import { useState, createContext } from 'react';
 import TabelaDeLivrosCategoriaAlt from '../components/TabelaDeLivrosCategoriaAlt';
 import '../styles.css';
-
-
+import Notification from '../components/Notification';
 
 
 const AlternativeCategoriasPage = () => {
 
+    const [notification, setNotification] = useState('')
+    const [notificationType, setNotificationType] = useState('')
 
     const [ categoria, setCategoria ] = useState("1");
 
@@ -20,6 +21,10 @@ const AlternativeCategoriasPage = () => {
 
     return(
         <>
+            <div className="container">
+                <Notification message = {notification} notificationType = {notificationType} />
+            </div>
+            <br></br>
             <div className="container mt-5">
                 <div className="row align-center text-center">
                     <div className="col-2">
@@ -77,7 +82,7 @@ const AlternativeCategoriasPage = () => {
                     <div className="col-10">
                         <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
                             <MyContext.Provider value={categoria}>
-                                <TabelaDeLivrosCategoriaAlt MyContext={MyContext} />
+                                <TabelaDeLivrosCategoriaAlt MyContext={MyContext} setNotification={setNotification} setNotificationType={setNotificationType} />
                             </MyContext.Provider>
                         </div>
                     </div>

@@ -2,6 +2,8 @@ import { useParams } from "react-router-dom";
 import useLivrosPorCategoria from "../hooks/useLivrosPorCategoria";
 import Livro from '../interfaces/Livro';
 import TabelaDeLivrosCategoria from '../components/TabelaDeLivrosCategoria';
+import { useState } from 'react';
+import Notification from '../components/Notification';
 
 let categoriasMap = new Map<string,string>([
     ["1","Ação"],
@@ -15,6 +17,10 @@ let categoriasMap = new Map<string,string>([
 ]);
 
 const LivrosDeCategoriaPage = () => {
+
+
+    const [notification, setNotification] = useState('')
+    const [notificationType, setNotificationType] = useState('')
 
     let { id } = useParams();
 
@@ -32,6 +38,10 @@ const LivrosDeCategoriaPage = () => {
 
     return (
         <>
+            <div className="container">
+                <Notification message = {notification} notificationType = {notificationType} />
+            </div>
+            <br></br>
             <div className="align-center text-center mt-5">
                 <h2>{categoriasMap.get(id!)}</h2>
             </div>
@@ -42,7 +52,7 @@ const LivrosDeCategoriaPage = () => {
                         <h2>Não há livros cadastrados nesta categoria.</h2>
                     </div>
                 </>
-                : <TabelaDeLivrosCategoria livros={livros}/>
+                : <TabelaDeLivrosCategoria setNotification={setNotification} setNotificationType={setNotificationType} livros={livros}/>
                 }   
             </div>
         </>
